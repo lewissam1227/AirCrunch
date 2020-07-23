@@ -1,0 +1,90 @@
+#!/bin/bash
+#AirCrunch is a tool that automates the process of piping crunch into aircrack to brute force WPA 2 passwords after salted hash capture.
+
+
+echo "**********AIR CRUNCH AUTOMATOR BY: SAM LEWIS**********"
+echo "**********         SAVAGEHACK.COM           **********"
+echo "THIS ONE IS FOR YOU KAYLA!"
+echo ""
+echo "I WILL NOT BE HELD RESPONSIBLE FOR THE MISUSE OF THIS SCRIPT"
+echo ""
+echo "Press Enter to Continue"
+read START
+if [[ $START == "" ]]; then
+sleep 2
+clear
+fi
+
+echo "-------------------------------------------------------------------"
+echo "Please type the path of your .cap file (i.e. /root/Desktop/-01.cap)"
+echo "-------------------------------------------------------------------"
+echo ""
+read CAP
+
+sleep 2
+clear
+
+echo "--------------------------------------------------------------------"
+echo "Please type the network BSSID (i.e. 37:F4:47:75:12:A2)"
+echo "--------------------------------------------------------------------"
+echo ""
+read BSSID
+sleep 2
+clear
+
+echo "--------------------------------------------------------------------"
+echo "Please type minimum character length (i.e. 6)"
+echo "--------------------------------------------------------------------"
+echo ""
+read MIN
+sleep 2
+clear
+
+echo "--------------------------------------------------------------------"
+echo "Please type maximum character length (i.e. 12)"
+echo "--------------------------------------------------------------------"
+echo ""
+read MAX
+sleep 2
+clear
+
+echo "--------------------------------------------------------------------"
+echo "Do you want to use all possible characters? Y/N"
+echo "--------------------------------------------------------------------"
+echo ""
+read CHAR
+
+
+
+if [[ $CHAR == 'y' ]]; then
+CHARSET="1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()"
+clear
+else
+echo "--------------------------------------------------------------------"
+echo "Enter all characters you wish to use with no spaces (i.e. abcdef123)"
+echo "--------------------------------------------------------------------"
+echo ""
+read CHARSET
+sleep 2
+clear
+fi
+
+echo "--------------------------------------------------------------------"
+echo "Enter a pattern using '@' for lowercase ',' for upper case '%' for 
+      numbers and '^' for symbols for unkown values and alphanumerics for 
+      known values or press enter for no pattern (i.e. @@@1980)"
+echo "--------------------------------------------------------------------"
+echo ""
+read PATT
+
+if [[ $PATT == "" ]]; then
+T=""
+else
+T=(-t $PATT)
+
+sleep2
+clear
+fi
+
+crunch  $MIN $MAX $CHARSET $T  $PATT | aircrack-ng --bssid $BSSID -w- $CAP
+
