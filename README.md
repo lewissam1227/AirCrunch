@@ -16,3 +16,7 @@ Use:
 11. If you don't know any pattern and just want to try every possible combination, you can just hit enter. 
 12. Crunch will then autopopulate a running wordlist for Aircrack and will begin cracking your password. 
 13. Happy Hacking!
+
+Watch the video below if you're still unsure.
+
+[![](http://img.youtube.com/vi/lY61gWZpy-U/0.jpg)](http://www.youtube.com/watch?v=lY61gWZpy-U "How To Use")
